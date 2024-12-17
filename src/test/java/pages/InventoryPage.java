@@ -5,10 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 public class InventoryPage {
     WebDriver driver;
-
-
     By searchLink = By.cssSelector("[data-test=inventory-item-name]");
-
 
     public InventoryPage(WebDriver driver) {
         this.driver = driver;
@@ -21,6 +18,4 @@ public class InventoryPage {
     public String getNameProduct(){
         return driver.findElement(searchLink).getText();
     }
-
-
 }

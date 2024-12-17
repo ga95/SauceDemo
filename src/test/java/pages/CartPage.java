@@ -20,5 +20,4 @@ public class CartPage {
     public void clickToCartLink() {
         driver.findElement(cartLink).click();
     }
-
 }
