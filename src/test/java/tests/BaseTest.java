@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.CartPage;
+import pages.InventoryPage;
 import pages.LoginPage;
 import pages.ProductsPage;
 
@@ -16,6 +17,7 @@ public class BaseTest {
     LoginPage loginPage;
     ProductsPage productsPage;
     CartPage cartPage;
+    InventoryPage inventoryPage;
 
     @BeforeMethod
     public void setup() {
@@ -23,10 +25,12 @@ public class BaseTest {
         options.addArguments("start-maximized");
         options.addArguments("incognito");
         driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(100));
         loginPage = new LoginPage(driver);
         productsPage = new ProductsPage(driver);
         cartPage = new CartPage(driver);
+        inventoryPage = new InventoryPage(driver);
+
     }
 
     @AfterMethod(alwaysRun = true)

@@ -54,17 +54,23 @@ public class LoginTest extends BaseTest {
                 "Products",
                 "Логин не выполнен");
         productsPage.clickButton();
-        //проверка, что именно у этого товара появилась кнопка удалить
-        //(id кнопок товаров уникальны. id кнопки добавить и удалить отличаются)
         Assert.assertEquals(productsPage.checkButtonRemove(),
                 "Remove",
                 "Кнопка Удалить не появилась");
         cartPage.clickToCartLink();
+        //проверяем, что мы на странице с title = You cart
+        Assert.assertEquals(cartPage.getTitle(),
+                "Your Cart",
+                "Переход в корзину не удался");
         //проверить, что кнопка удалить именно от добавленного товара присутствует на странице корзины
         Assert.assertEquals(productsPage.checkButtonRemove(),
                 "Remove",
                 "Кнопка Удалить не появилась");
-
+        inventoryPage.clickToInventoryLink();
+        // проверяем, что открыта страница товара
+        Assert.assertEquals(inventoryPage.getNameProduct(),
+                "Sauce Labs Backpack",
+                "Открыт не тот товар");
     }
 
 }
