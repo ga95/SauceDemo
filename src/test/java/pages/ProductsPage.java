@@ -13,7 +13,6 @@ public class ProductsPage {
     // id кнопки удалить конкретного товара
     By getProductRemove = By.cssSelector("[data-test=remove-sauce-labs-backpack]");
 
-
     public ProductsPage(WebDriver driver) {
         this.driver = driver;
     }
