@@ -1,10 +1,22 @@
 package tests;
 
+import io.qameta.allure.*;
+import jdk.jfr.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import static utils.AllureUtils.takeScreenshot;
+
 public class CartTest extends BaseTest{
-    @Test
+    @Test(priority = 1,testName = "Проверка добавления товара в корзину")
+    @Description("Проверка добавления товара в корзину")
+    @Severity(SeverityLevel.CRITICAL)
+    @Epic("Saucedemo-1.0")
+    @Feature("add to cart in saucedemo")
+    @Story("Добавление в корзину")
+    @TmsLink("http://www.jira.simple/CM-84")
+    @Issue("http://www.jira.simple/CM-145")
+    @Flaky
     public void checkAddProductToCart() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -29,5 +41,6 @@ public class CartTest extends BaseTest{
         Assert.assertEquals(inventoryPage.getNameProduct(),
                 "Sauce Labs Backpack",
                 "Открыт не тот товар");
+        takeScreenshot(driver);
     }
 }
